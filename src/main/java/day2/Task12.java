@@ -8,27 +8,24 @@ import java.util.Scanner;
 public class Task12 {
   public static void main(String[] args) throws Exception {
     System.out.printf("Enter your text");
-    Scanner in = new Scanner(System.in);
-    String str = in.nextLine();
-    System.out.printf("Your text is : %s \n", str);
+    final Scanner in = new Scanner(System.in);
+    final String str = in.nextLine();
+    System.out.printf("Your text is: %s \n", str);
 
     System.out.printf("Enter your number");
-    Scanner in1 = new Scanner(System.in);
-    Integer limit = in1.nextInt();
-    System.out.printf("Your number is : %s \n", limit);
+    final Scanner in1 = new Scanner(System.in);
+    final Integer limit = in1.nextInt();
+    System.out.printf("Your number is: %s \n", limit);
 
     in1.close();
     in.close();
 
     MainHelper.checkLimit(limit);
-    MainHelper.checkString(str);
+    final Integer textLength = MainHelper.getStrLength(str);
+    final String textWithoutBackSpaces = MainHelper.strReplace(str, " ", "");
 
-    Integer textLength = str.length();
-    String textWithoutBackSpaces = MainHelper.strReplace(str, " ", "");
-    String textWithoutStopWorld = MainHelper.strReplace(str, "test", "***");
-
-    System.out.println(String.format("Length - %d", textLength));
-    System.out.println(String.format("Text without backspaces - %s", textWithoutBackSpaces));
+    System.out.println(String.format("Text length: %d", textLength));
+    System.out.println(String.format("Text without backspaces: %s", textWithoutBackSpaces));
 
     if (textLength > limit)
       System.out.println(String.format("Text is longer than %d", textLength - limit));
@@ -41,12 +38,10 @@ public class Task12 {
             .length(textLength)
             .pureLength(textWithoutBackSpaces.length())
             .originText(str)
-            .pureText(textWithoutStopWorld)
+            .pureText(MainHelper.strReplace(str, "test", "***"))
             .pureShortText(MainHelper.cutString(str, limit))
             .build();
 
-    Gson gson = new Gson();
-    String json = gson.toJson(obj);
-    System.out.println(json);
+    System.out.println(new Gson().toJson(obj));
   }
 }

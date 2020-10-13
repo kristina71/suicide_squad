@@ -6,10 +6,11 @@ public class MainHelper {
       throw new Exception(String.format("Number should be > 1 , actual number is %d", number));
   }
 
-  public static void checkString(String text) throws Exception {
+  public static int getStrLength(String text) throws Exception {
     if (text.length() < 1)
       throw new Exception(
           String.format("Text length should be > 1 , actual text length is %d", text.length()));
+    else return text.length();
   }
 
   public static String cutString(String str, Integer limit) {
