@@ -3,6 +3,7 @@ package day1.helpers;
 import static io.restassured.RestAssured.given;
 
 import day1.models.WorldTimeResponse;
+import helpers.PropertyLoader;
 import io.restassured.http.ContentType;
 
 public class MainHelper {

@@ -4,11 +4,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import day1.helpers.MainHelper;
+import helpers.PropertyLoader;
 import org.junit.jupiter.api.Test;
 
 public class Task1Tests {
 
-  private static String NAME = System.getProperty("name");
+  private static String NAME = PropertyLoader.getProperties("name");
 
   @Test
   void goodNightTest() throws Exception {
