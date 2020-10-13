@@ -33,7 +33,7 @@ public class Task12 {
       pureText = MainHelper.strReplace(pureText, word, "***");
     }
 
-    TextInfo obj =
+    TextInfo textInfo =
         TextInfo.builder()
             .length(textLength)
             .pureLength(textWithoutBackSpaces.length())
@@ -42,6 +42,6 @@ public class Task12 {
             .pureShortText(MainHelper.cutString(str, limit))
             .build();
 
-    System.out.println(new Gson().toJson(obj));
+    System.out.println(new Gson().toJson(textInfo));
   }
 }
