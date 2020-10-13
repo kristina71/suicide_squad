@@ -3,6 +3,8 @@ package day2;
 import com.google.gson.Gson;
 import day2.helpers.MainHelper;
 import day2.models.TextInfo;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Task12 {
@@ -33,12 +35,22 @@ public class Task12 {
     if (textLength % 2 == 0) System.out.println("This is even number");
     else System.out.println("This is odd number");
 
+    List<String> forbiddenWords = new ArrayList<>();
+
+    // TODO should create a scanner for params
+    String pureText = str;
+    forbiddenWords.add("test");
+    forbiddenWords.add("aaaaa");
+    for (String word : forbiddenWords) {
+      pureText = MainHelper.strReplace(pureText, word, "***");
+    }
+
     TextInfo obj =
         TextInfo.builder()
             .length(textLength)
             .pureLength(textWithoutBackSpaces.length())
             .originText(str)
-            .pureText(MainHelper.strReplace(str, "test", "***"))
+            .pureText(pureText)
             .pureShortText(MainHelper.cutString(str, limit))
             .build();
 
