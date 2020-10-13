@@ -7,16 +7,18 @@ import day2.helpers.MainHelper;
 import org.junit.jupiter.api.Test;
 
 public class Task12Tests {
+  private static final String STR = "test test";
+
   @Test
   void replaceTest() {
-    assertThat(MainHelper.strReplace("test test", "test", "***"), is("*** ***"));
-    assertThat(MainHelper.strReplace("test test", " ", ""), is("testtest"));
+    assertThat(MainHelper.strReplace(STR, "test", "***"), is("*** ***"));
+    assertThat(MainHelper.strReplace(STR, " ", ""), is("testtest"));
   }
 
   @Test
   void cutStringTest() {
-    assertThat(MainHelper.cutString("test test", 3), is("tes..."));
-    assertThat(MainHelper.cutString("test test", 9), is("test test"));
-    assertThat(MainHelper.cutString("test test", 10), is("test test"));
+    assertThat(MainHelper.cutString(STR, 3), is("tes..."));
+    assertThat(MainHelper.cutString(STR, 9), is("test test"));
+    assertThat(MainHelper.cutString(STR, 10), is("test test"));
   }
 }
