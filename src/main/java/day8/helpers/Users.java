@@ -42,10 +42,15 @@ public class Users {
     return p;
   }
 
+  private static <T> Predicate<T> reduceFilters(Predicate<T>... predicates) {
+    Predicate<T> p = Stream.of(predicates).reduce(x -> true, Predicate::or);
+    return p;
+  }
+
   public List<UserDataItem> findAdult(Stream<UserDataItem> extractDataText) {
     return extractDataText
         .filter(
-            combineFilters(
+                reduceFilters(
                 combineFilters(v -> v.getAge() >= 18, v -> v.getCounty().equals("Russia")),
                 combineFilters(v -> v.getAge() >= 20, v -> v.getCounty().equals("Japan")),
                 combineFilters(v -> v.getAge() >= 21, v -> v.getCounty().equals("USA")),
@@ -56,7 +61,7 @@ public class Users {
   public List<UserDataItem> findBrokenData(Stream<UserDataItem> extractDataText) {
     return extractDataText
         .filter(
-            combineFilters(
+                reduceFilters(
                 combineFilters(
                     v -> v.getAge() >= 18,
                     v -> v.getCounty().equals("Russia"),
