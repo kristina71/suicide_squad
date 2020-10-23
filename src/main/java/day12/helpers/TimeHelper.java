@@ -41,7 +41,7 @@ public class TimeHelper {
     }
 
     try {
-      if (Integer.parseInt(splitTime[1]) > 59 || Integer.parseInt(splitTime[0]) < 0)
+      if (Integer.parseInt(splitTime[1]) > 59 || Integer.parseInt(splitTime[1]) < 0)
         throw new BadMinuteException(String.format("Bad minute format %s", time));
     } catch (Exception e) {
       throw new BadNumberException(
