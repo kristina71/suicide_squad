@@ -96,8 +96,8 @@ public class TextHelper {
   public static DataTextItem findDataTextByHash(String content, String hash) throws Exception {
     DataText extractDataText = new Gson().fromJson(content, DataText.class);
     return extractDataText.getData().stream()
-            .filter(v -> v.getHash().equals(hash))
-            .findFirst()
-            .orElseThrow(() -> new Exception(String.format("Cannot find hash %s", hash)));
+        .filter(v -> v.getHash().equals(hash))
+        .findFirst()
+        .orElseThrow(() -> new Exception(String.format("Cannot find hash %s", hash)));
   }
 }
